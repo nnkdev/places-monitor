@@ -1,0 +1,51 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+        maven { url "https://plugins.gradle.org/m2/" }
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:4.0.1'
+        classpath 'org.codehaus.groovy:groovy-all:2.4.15'
+        classpath "org.jfrog.buildinfo:build-info-extractor-gradle:4.9.4"
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.+'
+    }
+}
+
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        maven { url "https://plugins.gradle.org/m2/" }
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+    }
+
+    apply plugin: 'maven-publish'
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+ext {
+    // android config
+    minSdkVersion = 14
+    targetSdkVersion = 27
+    compileSdkVersion = 27
+    versionCode = 1
+    //versionName = "5.0.0b2"
+
+    // java config
+    sourceCompatibility = JavaVersion.VERSION_1_7
+    targetCompatibility = JavaVersion.VERSION_1_7
+
+    // dependencies
+    jacocoVersion = "0.8.5"
+    junitVersion = "4.12"
+    mockitoCoreVersion = "2.10.0"
+    testSupportLibVersion = "1.0.1"
+    testInstrumentationRunner = "android.support.test.runner.AndroidJUnitRunner"
+}
